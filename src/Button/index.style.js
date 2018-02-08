@@ -20,4 +20,8 @@ export const ButtonWrapper = styled.button`
     color: #fff;
     background-color: lightgreen;
   }
+  &.secondary {
+    color: #fff;
+    background-color: CornflowerBlue ;
+  }
 `;

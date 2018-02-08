@@ -34,7 +34,7 @@ class SearchBar extends Component {
       <Wrapper>
         <SearchBarWrapper>{this.renderInput()}</SearchBarWrapper>
         <Button
-          type={'primary'}
+          type={'secondary'}
           onClick={this.props.onAddClick}>
           Add
         </Button>
