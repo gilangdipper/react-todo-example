@@ -17,7 +17,11 @@ class Todo extends Component {
 
   renderSearchBar = keyword => {
     return (
-      <SearchBar keyword={keyword} keywordChanged={this.updateKeyward} />
+      <SearchBar 
+        keyword={keyword} 
+        keywordChanged={this.updateKeyward} 
+        onAddClick={this.handleAddList}
+      />
     )
   }
 
@@ -68,6 +72,23 @@ class Todo extends Component {
     clickedItem.status = itemStatus === 'completed' ? 'incompleted' : 'completed'
     this.setState({ list })
   }
+
+  handleAddList = () => {
+    this.addList(this.state.keyword);
+  };
+
+  addList = content => {
+    const newList = {
+      id: this.state.list.length + 1,
+      content: content,
+      status: "incompleted",
+    };
+
+    this.setState({
+      list: this.state.list.concat(newList),
+      keyword: '',
+    })
+  };
 
   updateKeyward = keyword => {
     this.setState(() => ({ keyword }))

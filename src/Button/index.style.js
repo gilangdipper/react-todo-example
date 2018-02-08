@@ -5,6 +5,7 @@ export const ButtonWrapper = styled.button`
   font-size: inherit;
   border-radius: 0.2em;
   border: none;
+  vertical-align:middle;
   &:hover {
     cursor: pointer;
   }

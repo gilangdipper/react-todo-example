@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { SearchBarWrapper } from "./index.style";
+import { SearchBarWrapper, Wrapper } from "./index.style";
+import Button from '../Button';
 
 class SearchBar extends Component {
   state = {
@@ -20,9 +21,7 @@ class SearchBar extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.keyword) {
-      this.setKeyword(nextProps.keyword);
-    }
+    this.setKeyword(nextProps.keyword);
   }
 
   renderInput = () => {
@@ -31,7 +30,16 @@ class SearchBar extends Component {
   };
 
   render() {
-    return <SearchBarWrapper>{this.renderInput()}</SearchBarWrapper>;
+    return (
+      <Wrapper>
+        <SearchBarWrapper>{this.renderInput()}</SearchBarWrapper>
+        <Button
+          type={'primary'}
+          onClick={this.props.onAddClick}>
+          Add
+        </Button>
+      </Wrapper>
+    );
   }
 }
 
