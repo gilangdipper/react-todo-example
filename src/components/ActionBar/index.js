@@ -1,22 +1,17 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { ActionBarWrapper } from './index.style'
-
-import Button from '../Button'
+import { TODO_ALL, TODO_COMPLETED, TODO_INCOMPLETED } from '../../constants/ActionTypes'
+import ButtonFilter from '../../containers/ButtonFilter'
 
 class ActionBar extends Component {
-
-  getClassByActionType = (buttonType, actionType) => {
-    return actionType === buttonType ? 'primary' : 'default'
-  }
-
-  renderActionButton = (content, buttonType, actionType) => {
+  renderActionButton = (content, buttonType) => {
     return (
-      <Button
-        type={this.getClassByActionType(buttonType, actionType)}
-        onClick={e => this.handleChanged(buttonType)}>
+      <ButtonFilter
+        filter={buttonType}
+      >
         {content}
-      </Button>
+      </ButtonFilter>
     )
   }
 
@@ -29,9 +24,9 @@ class ActionBar extends Component {
   renderActionBar = actionType => {
     return (
       <Fragment>
-        {this.renderActionButton('All', 'all', actionType)}
-        {this.renderActionButton('Completed', 'completed', actionType)}
-        {this.renderActionButton('Incompleted', 'incompleted', actionType)}
+        {this.renderActionButton('All', TODO_ALL)}
+        {this.renderActionButton('Completed', TODO_COMPLETED)}
+        {this.renderActionButton('Incompleted', TODO_INCOMPLETED)}
       </Fragment>
     )
   }
@@ -49,10 +44,6 @@ class ActionBar extends Component {
 ActionBar.propTypes = {
   type: PropTypes.string,
   onChange: PropTypes.func,
-}
-
-ActionBar.defaultProps = {
-  type: 'all'
 }
 
 export default ActionBar

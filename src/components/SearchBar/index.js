@@ -20,6 +20,12 @@ class SearchBar extends Component {
     }
   };
 
+  handleOnAddClick = () => {
+    this.props.onAddClick(this.state.keyword);
+    this.setKeyword();
+    this.props.keywordChanged('')
+  }
+
   componentWillReceiveProps(nextProps) {
     this.setKeyword(nextProps.keyword);
   }
@@ -35,7 +41,7 @@ class SearchBar extends Component {
         <SearchBarWrapper>{this.renderInput()}</SearchBarWrapper>
         <Button
           type={'secondary'}
-          onClick={this.props.onAddClick}>
+          onClick={this.handleOnAddClick}>
           Add
         </Button>
       </Wrapper>

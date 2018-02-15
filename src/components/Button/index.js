@@ -3,11 +3,10 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import { ButtonWrapper } from "./index.style";
 
-const Button = ({ children, type, onClick }) => {
-  const className = classNames(type);
+const Button = ({ actionType, type, onClick, children }) => {
   return (
     <ButtonWrapper
-      className={className}
+      className={classNames(actionType === type ? 'primary' : 'default')}
       onClick={onClick}
     >
       {children}
