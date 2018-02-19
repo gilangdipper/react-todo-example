@@ -5,8 +5,15 @@ export const ItemWrapper =  styled.div`
     &:hover {
       cursor: pointer;
     }
+  }
+  span {
     &.completed {
       text-decoration: line-through;
+    }
+    &.remove {
+      color: red;
+      font-weight: 700;
+      margin-left: 10px;
     }
   }
   .highlight {

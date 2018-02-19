@@ -9,12 +9,12 @@ describe('todo actions', () => {
     })
   })
 
-  // it('deleteTodo should create DELETE_TODO action', () => {
-  //   expect(actions.deleteTodo(1)).toEqual({
-  //     type: types.DELETE_TODO,
-  //     id: 1
-  //   })
-  // })
+  it('deleteTodo should create REMOVE_TODO action', () => {
+    expect(actions.removeTodo(1)).to.deep.equal({
+      type: types.REMOVE_TODO,
+      id: 1
+    })
+  })
 
   // it('editTodo should create EDIT_TODO action', () => {
   //   expect(actions.editTodo(1, 'Use Redux everywhere')).toEqual({

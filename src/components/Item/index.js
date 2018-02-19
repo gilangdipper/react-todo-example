@@ -8,17 +8,29 @@ class Item extends Component {
   renderItem = (content, status) => {
     const { keyword } = this.props;
     return (
-      <li className={classnames(status)} onClick={this.handleClick}>
-        {keyword ? this.splitContent(content, keyword) : content}
+      <li>
+        <span className={classnames(status)} onClick={this.handleAddClick}>
+          {keyword ? this.splitContent(content, keyword) : content}
+        </span>
+        <span className='remove' onClick={this.handleRemoveClick}>
+          x
+        </span>
       </li>
     );
   };
 
-  handleClick = e => {
-    if (this.props.onClick) {
-      this.props.onClick(e);
+  handleAddClick = e => {
+    if (this.props.onAddClick) {
+      this.props.onAddClick(e);
     }
   };
+
+  handleRemoveClick = e => {
+    if (this.props.onRemoveClick) {
+      this.props.onRemoveClick(e);
+    }
+  };
+
 
   splitContent = (content, keywrod) => {
     let contentList = content
@@ -45,7 +57,8 @@ class Item extends Component {
 Item.propTypes = {
   status: PropTypes.string,
   keyword: PropTypes.string,
-  onClick: PropTypes.func
+  onAddClick: PropTypes.func,
+  onRemoveClick: PropTypes.func
 };
 
 Item.defaultProps = {

@@ -13,7 +13,8 @@ class Todo extends Component {
     <Item
       key={item.id}
       status={item.status}
-      onClick={() => this.props.onTodoClick(item.id)}
+      onAddClick={() => this.props.onTodoClick(item.id)}
+      onRemoveClick={() => this.props.onRemoveClick(item.id)}
       keyword={this.props.keyword}>
       {item.content}
     </Item>

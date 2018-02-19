@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO } from '../constants/ActionTypes'
+import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO } from '../constants/ActionTypes'
 
 const initialState = [
   { id: 1, content: "eating breakfast ⏰", status: "completed" },
@@ -17,12 +17,17 @@ export default function todos(state = initialState, action) {
           status: "incompleted"
         }
       ]
-
+    
     case TOGGLE_TODO:
       return state.map(todo =>
         todo.id === action.id ?
           { ...todo, status: todo.status === 'completed' ? 'incompleted' : 'completed'} :
           todo
+      )
+
+    case REMOVE_TODO:
+      return state.filter(todo =>
+        todo.id !== action.id
       )
 
     default:
